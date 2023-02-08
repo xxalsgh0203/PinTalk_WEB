@@ -17,22 +17,22 @@ const Navbar = ({ title }) => {
   };
 
   return (
-    <div className="relative">
+    <div className='relative'>
       <div className={cls('flex items-center justify-between p-4 bg-white')}>
         <MainLogo />
         <h1>{title}</h1>
 
         {smallSize ? (
-          <div onClick={toggleActive} className="cursor-pointer">
+          <div onClick={toggleActive} className='cursor-pointer'>
             {isActive ? <AiOutlineClose size={25} /> : <GiHamburgerMenu size={25} />}
           </div>
         ) : (
-          <ul className="z-10 flex items-center space-x-6 text-kukmin-dark-brown font-semi-bold text-lg">
+          <ul className='z-10 flex items-center space-x-6 text-kukmin-dark-brown font-semi-bold text-lg'>
             {navbarsMain.map((item) => (
               <li key={item.id}>
                 <span
                   onClick={() => onPage(item.id)}
-                  className="block p-1 hover:bg-gray-100 rounded-lg transition-all cursor-pointer"
+                  className='block p-1 hover:bg-gray-100 rounded-lg transition-all cursor-pointer'
                 >
                   {item.title}
                 </span>

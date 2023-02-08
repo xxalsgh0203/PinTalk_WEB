@@ -17,7 +17,6 @@
   },
   "plugins": ["react"],
   "rules": {
-    "quotes": "off",
     "comma-dangle": "off",
     "semi": "off",
     "multiline-ternary": "off",
@@ -39,11 +38,13 @@
     "spaced-comment": 0,
     "no-unused-expressions": 0,
     "no-unneeded-ternary": "off",
+    "no-useless-escape": "off",
     "array-callback-return": "off",
     "prefer-const": 0,
     "no-useless-return": 0,
     "no-console": ["warn", { "allow": ["warn", "error"] }],
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-var-requires": "off",
 
     "react/react-in-jsx-scope": 0,
     "react/prop-types": 0,
