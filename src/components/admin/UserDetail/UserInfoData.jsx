@@ -1,17 +1,17 @@
-import { useForm } from 'react-hook-form';
-import CommonInput from '../../shareInputs/CommonInput';
-import Gender from '../../shareInputs/Gender';
-import SSN from '../../shareInputs/SSN';
-import Phone from '../../shareInputs/Phone';
-import Email from '../../shareInputs/Email';
-import ValidateForm, { NOT_NUMBER, NUMBER, NUMBER_ENGLISH } from '../../../utils/validateForm';
-import Password from '../../shareInputs/Password';
-import Status from '../../shareInputs/Status';
-import { useEffect } from 'react';
-import EditCloseButton from './EditCloseButton';
-import useMutation from '../../../hooks/useMutation';
-import Sidebar from './Sidebar';
-import useAddress from '../../../hooks/useAddress';
+import { useForm } from "react-hook-form";
+import CommonInput from "../../shareInputs/CommonInput";
+import Gender from "../../shareInputs/Gender";
+import SSN from "../../shareInputs/SSN";
+import Phone from "../../shareInputs/Phone";
+import Email from "../../shareInputs/Email";
+import ValidateForm, { NOT_NUMBER, NUMBER, NUMBER_ENGLISH } from "../../../utils/validateForm";
+import Password from "../../shareInputs/Password";
+import Status from "../../shareInputs/Status";
+import { useEffect } from "react";
+import EditCloseButton from "./EditCloseButton";
+import useMutation from "../../../hooks/useMutation";
+import Sidebar from "./Sidebar";
+import useAddress from "../../../hooks/useAddress";
 
 const validateForm = new ValidateForm();
 
@@ -23,56 +23,56 @@ const UserInfoData = ({ userInfo }) => {
     formState: { errors },
     setValue,
   } = useForm({
-    mode: 'onChange',
+    mode: "onChange",
   });
 
-  const { error, loading, mutation, data } = useMutation('/userMemberDetailModify');
+  const { error, loading, mutation, data } = useMutation("/userMemberDetailModify");
   const { address, handleAddress } = useAddress();
 
   useEffect(() => {
     if (data === true) {
-      alert('수정완료');
+      alert("수정완료");
       window.opener.location.reload();
       window.close();
     } else if (data === false) {
-      alert('수정을 완료할 수 없습니다');
+      alert("수정을 완료할 수 없습니다");
     }
   }, [data]);
 
   useEffect(() => {
     if (address) {
-      setValue('address1', address);
+      setValue("address1", address);
     }
   }, [address]);
 
   useEffect(() => {
     if (userInfo[0]) {
-      setValue('name', userInfo[0].name === null ? '' : userInfo[0].name);
-      setValue('gender', userInfo[0].gender === null ? '' : userInfo[0].gender);
-      setValue('ssn1', userInfo[0].ssn1 === null ? '' : userInfo[0].ssn1);
-      setValue('ssn2', userInfo[0].ssn2 === null ? '' : userInfo[0].ssn2);
-      setValue('phone1', userInfo[0].phone1 === null ? '' : userInfo[0].phone1);
-      setValue('phone2', userInfo[0].phone2 === null ? '' : userInfo[0].phone2);
-      setValue('phone3', userInfo[0].phone3 === null ? '' : userInfo[0].phone3);
-      setValue('id', userInfo[0].id === null ? '' : userInfo[0].id);
+      setValue("name", userInfo[0].name === null ? "" : userInfo[0].name);
+      setValue("gender", userInfo[0].gender === null ? "" : userInfo[0].gender);
+      setValue("ssn1", userInfo[0].ssn1 === null ? "" : userInfo[0].ssn1);
+      setValue("ssn2", userInfo[0].ssn2 === null ? "" : userInfo[0].ssn2);
+      setValue("phone1", userInfo[0].phone1 === null ? "" : userInfo[0].phone1);
+      setValue("phone2", userInfo[0].phone2 === null ? "" : userInfo[0].phone2);
+      setValue("phone3", userInfo[0].phone3 === null ? "" : userInfo[0].phone3);
+      setValue("id", userInfo[0].id === null ? "" : userInfo[0].id);
       // setValue('password', userInfo[0].password === null ? '' : userInfo[0].password);
-      setValue('address1', userInfo[0].address1 === null ? '' : userInfo[0].address1);
-      setValue('address2', userInfo[0].address2 === null ? '' : userInfo[0].address2);
+      setValue("address1", userInfo[0].address1 === null ? "" : userInfo[0].address1);
+      setValue("address2", userInfo[0].address2 === null ? "" : userInfo[0].address2);
       setValue(
-        'frontEmail',
-        userInfo[0].email === null ? 'example' : userInfo[0].email.split('@')[0],
+        "frontEmail",
+        userInfo[0].email === null ? "example" : userInfo[0].email.split("@")[0],
       );
       setValue(
-        'backEmail',
-        userInfo[0].email === null ? 'email.com' : userInfo[0].email.split('@')[1],
+        "backEmail",
+        userInfo[0].email === null ? "email.com" : userInfo[0].email.split("@")[1],
       );
-      setValue('job_key', userInfo[0].job_key === null ? '' : userInfo[0].job_key);
-      setValue('saveStatus', userInfo[0].saveStatus === null ? '' : userInfo[0].saveStatus);
+      setValue("job_key", userInfo[0].job_key === null ? "" : userInfo[0].job_key);
+      setValue("saveStatus", userInfo[0].saveStatus === null ? "" : userInfo[0].saveStatus);
     }
   }, [userInfo[0]]);
 
   const onValid = (data) => {
-    const email = data.frontEmail && data.frontEmail + '@' + data.backEmail;
+    const email = data.frontEmail && data.frontEmail + "@" + data.backEmail;
     const phone1 = data.phone2 && data.phone3 ? data.phone1 : null;
     const address = data.address1 + data.address2 || null;
     const ssn = data.ssn1 + data.ssn2 || null;
@@ -120,8 +120,8 @@ const UserInfoData = ({ userInfo }) => {
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap w-5/12">
                         <CommonInput
-                          register={register('name', {
-                            onChange: (e) => validateForm.inputValid(e, 'name', NOT_NUMBER),
+                          register={register("name", {
+                            onChange: (e) => validateForm.inputValid(e, "name", NOT_NUMBER),
                           })}
                           errorMessage={errors.name?.message}
                           htmlFor="name"
@@ -136,7 +136,7 @@ const UserInfoData = ({ userInfo }) => {
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         <Gender
-                          register={register('gender')}
+                          register={register("gender")}
                           watch={watch}
                           ugender={userInfo[0]?.gender}
                           editPage
@@ -219,13 +219,13 @@ const UserInfoData = ({ userInfo }) => {
                           <input
                             onClick={handleAddress}
                             type="text"
-                            {...register('address1')}
+                            {...register("address1")}
                             className="bg-transparent rounded-md w-full h-full p-1 px-3 outline-none border-2 transition-all"
                           />
                         </div>
 
                         <CommonInput
-                          register={register('address2')}
+                          register={register("address2")}
                           htmlFor="address2"
                           label="상세주소"
                         />
@@ -244,13 +244,13 @@ const UserInfoData = ({ userInfo }) => {
                           errorMessage={errors.frontEmail?.message || errors.backEmail?.message}
                           email1={
                             userInfo[0]?.email === null
-                              ? 'example'
-                              : userInfo[0]?.email.split('@')[0]
+                              ? "example"
+                              : userInfo[0]?.email.split("@")[0]
                           }
                           email2={
                             userInfo[0]?.email === null
-                              ? 'email.com'
-                              : userInfo[0]?.email.split('@')[1]
+                              ? "email.com"
+                              : userInfo[0]?.email.split("@")[1]
                           }
                           editPage
                         />
@@ -262,11 +262,11 @@ const UserInfoData = ({ userInfo }) => {
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         {userInfo[0]?.job_key}
                         <CommonInput
-                          register={register('job_key', {
-                            onChange: (e) => validateForm.inputValid(e, 'job_key', NUMBER),
+                          register={register("job_key", {
+                            onChange: (e) => validateForm.inputValid(e, "job_key", NUMBER),
                             minLength: {
                               value: 4,
-                              message: '4자리 이상 입력해주세요.',
+                              message: "4자리 이상 입력해주세요.",
                             },
                           })}
                           errorMessage={errors.job_key?.message}
@@ -283,7 +283,7 @@ const UserInfoData = ({ userInfo }) => {
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         <Status
-                          register={register('saveStatus')}
+                          register={register("saveStatus")}
                           watch={watch}
                           usavestatus={userInfo[0]?.saveStatus}
                         />

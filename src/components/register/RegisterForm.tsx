@@ -1,21 +1,22 @@
-import { useForm } from 'react-hook-form';
-import CommonInput from '../shareInputs/CommonInput';
-import Gender from '../shareInputs/Gender';
-import SSN from '../shareInputs/SSN';
-import Phone from '../shareInputs/Phone';
-import Email from '../shareInputs/Email';
-import ValidateForm, { NUMBER, NUMBER_ENGLISH } from '../../utils/validateForm';
-import Password from '../shareInputs/Password';
-import useMutation from '../../hooks/useMutation';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+import CommonInput from "../shareInputs/CommonInput";
+import Gender from "../shareInputs/Gender";
+import SSN from "../shareInputs/SSN";
+import Phone from "../shareInputs/Phone";
+import Email from "../shareInputs/Email";
+import ValidateForm, { NUMBER, NUMBER_ENGLISH } from "../../utils/validateForm";
+import Password from "../shareInputs/Password";
+import useMutation from "../../hooks/useMutation";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-import Loading from '../Loading';
-import useAddress from '../../hooks/useAddress';
+import Loading from "../Loading";
+import useAddress from "../../hooks/useAddress";
+import { UserRegisterData } from "../../model/interface/userList";
 
 const validateForm = new ValidateForm();
 const RegisterForm = () => {
-  const { error, loading, mutation, data } = useMutation('/userMemberInsert');
+  const { error, loading, mutation, data } = useMutation("/userMemberInsert");
   const { address, handleAddress } = useAddress();
   const navigate = useNavigate();
   const {
@@ -25,12 +26,12 @@ const RegisterForm = () => {
     formState: { errors },
     setValue,
     setError,
-  } = useForm({
-    mode: 'onChange',
+  } = useForm<UserRegisterData>({
+    mode: "onChange",
   });
 
-  const onValid = (data) => {
-    const email = data.frontEmail && data.frontEmail + '@' + data.backEmail;
+  const onValid = (data: UserRegisterData) => {
+    const email = data.frontEmail && data.frontEmail + "@" + data.backEmail;
     const ssn = data.ssn1 + data.ssn2;
     const phone1 = data.phone2 && data.phone3 ? data.phone1 : null;
 
@@ -48,7 +49,7 @@ const RegisterForm = () => {
       phone3: data.phone3 || null,
       ssn,
     };
-    if (window.confirm('정말 등록하시겠습니까?')) {
+    if (window.confirm("정말 등록하시겠습니까?")) {
       mutation(submitData);
     }
     return;
@@ -56,19 +57,21 @@ const RegisterForm = () => {
 
   useEffect(() => {
     if (data) {
-      navigate('/admin');
+      navigate("/admin");
       window.close();
     }
     if (data === false) {
-      setError('error', { message: '필수 정보가 중복되었습니다.' });
+      setError("error", { message: "필수 정보가 중복되었습니다." });
     }
   }, [data]);
 
   useEffect(() => {
     if (address) {
-      setValue('address1', address);
+      setValue("address1", address);
     }
   }, [address]);
+
+  const errorMessage = errors.error?.message;
 
   return loading ? (
     <Loading />
@@ -78,14 +81,14 @@ const RegisterForm = () => {
       className="rounded-lg max-w-xl lg:max-w-2xl m-auto space-y-4 pb-3"
     >
       {(error || errors.error?.message) && (
-        <span className="text-red-500 text-xl font-bold">{error || errors.error?.message}</span>
+        <span className="text-red-500 text-xl font-bold">{errors.error?.message?.toString()}</span>
       )}
       <div className="space-y-5">
         <div className="flex items-center space-x-10">
           <div className="w-[50%]">
             <CommonInput
-              register={register('name', {
-                required: '이름을 입력해주세요.',
+              register={register("name", {
+                required: "이름을 입력해주세요.",
               })}
               necessary
               errorMessage={errors.name?.message}
@@ -98,8 +101,8 @@ const RegisterForm = () => {
           <Gender
             necessary
             errorMessage={errors?.gender?.message}
-            register={register('gender', {
-              required: '성별을 입력해주세요.',
+            register={register("gender", {
+              required: "성별을 입력해주세요.",
             })}
             watch={watch}
           />
@@ -125,11 +128,11 @@ const RegisterForm = () => {
 
         <div className="space-y-2">
           <CommonInput
-            register={register('id', {
-              required: '아이디를 입력해주세요.',
+            register={register("id", {
+              required: "아이디를 입력해주세요.",
               onChange: (e) => {
                 validateForm.notSpecialString(e);
-                return validateForm.inputValid(e, 'id', NUMBER_ENGLISH);
+                return validateForm.inputValid(e, "id", NUMBER_ENGLISH);
               },
             })}
             htmlFor="id"
@@ -163,12 +166,12 @@ const RegisterForm = () => {
             <input
               onClick={handleAddress}
               type="text"
-              {...register('address1')}
+              {...register("address1")}
               className="bg-transparent rounded-md w-full h-full p-1 px-3 outline-none border-2 transition-all"
             />
           </div>
 
-          <CommonInput register={register('address2')} htmlFor="address2" label="상세주소" />
+          <CommonInput register={register("address2")} htmlFor="address2" label="상세주소" />
         </div>
 
         <Email
@@ -181,14 +184,14 @@ const RegisterForm = () => {
         <div className="flex items-center space-x-6">
           <div className="w-[50%]">
             <CommonInput
-              register={register('jobkey', {
-                onChange: (e) => validateForm.inputValid(e, 'jobkey', NUMBER),
+              register={register("jobkey", {
+                onChange: (e) => validateForm.inputValid(e, "jobkey", NUMBER),
                 minLength: {
                   value: 4,
-                  message: '4자리 이상 입력해주세요.',
+                  message: "4자리 이상 입력해주세요.",
                 },
               })}
-              errorMessage={errors.job_key?.message}
+              errorMessage={errors.job_key?.message?.toString()}
               htmlFor="jobkey"
               label="직업코드"
               maxLength={4}

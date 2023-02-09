@@ -1,18 +1,23 @@
-import { useForm, Controller } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import { userSlice } from '../../../redux/slices/userSlice';
+import { useForm, Controller } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { CodeEmail, UserFilteringData } from "../../../model/interface/userList";
+import { userSlice } from "../../../redux/slices/userSlice";
 
-import { openNewWindow } from '../../../utils/openNewWindow';
-import ValidateForm, { inputSetValues, NUMBER, NUMBER_ENGLISH } from '../../../utils/validateForm';
-import FormErrorMessage from '../../FormErrorMessage';
+import { openNewWindow } from "../../../utils/openNewWindow";
+import ValidateForm, { inputSetValues, NUMBER, NUMBER_ENGLISH } from "../../../utils/validateForm";
+import FormErrorMessage from "../../FormErrorMessage";
 
-import BirthPicker from './datePicker/BirthPicker';
-import DatePicker from './datePicker/DatePicker';
-import FilteringButton from './FilteringButton';
-import FilteringInput from './FilteringInput';
+import BirthPicker from "./datePicker/BirthPicker";
+import DatePicker from "./datePicker/DatePicker";
+import FilteringButton from "./FilteringButton";
+import FilteringInput from "./FilteringInput";
+
+interface Props {
+  emailCodeGroup: CodeEmail[];
+}
 
 const validateForm = new ValidateForm();
-const UserFilteringTable = ({ emailCodeGroup }) => {
+const UserFilteringTable = ({ emailCodeGroup }: Props) => {
   const userSubmitDispatch = useDispatch();
   const {
     register,
@@ -20,12 +25,12 @@ const UserFilteringTable = ({ emailCodeGroup }) => {
     reset,
     formState: { errors },
     control,
-  } = useForm({
-    mode: 'onBlur',
+  } = useForm<UserFilteringData>({
+    mode: "onBlur",
   });
 
   const handleResetValue = () => {
-    reset((formValue) => ({
+    reset((formValue: any) => ({
       ...formValue,
       gender: null,
       name: null,
@@ -48,23 +53,23 @@ const UserFilteringTable = ({ emailCodeGroup }) => {
     }));
   };
 
-  const convertEmail = (frontEmail, backEmail) => {
+  const convertEmail = (frontEmail?: string | null, backEmail?: string | null) => {
     if (frontEmail && backEmail) {
-      return frontEmail + '@' + backEmail;
+      return frontEmail + "@" + backEmail;
     }
     if (frontEmail) return frontEmail;
-    if (backEmail) return '@' + backEmail;
+    if (backEmail) return "@" + backEmail;
   };
 
-  const convertDate = (date) => {
+  const convertDate = (date?: string | null) => {
     if (!date) return;
-    const year = new Date(date).getFullYear() + '';
-    const month = new Date(date).toLocaleDateString('en', { month: '2-digit' });
-    const day = new Date(date).toLocaleDateString('en', { day: '2-digit' });
-    return year + '-' + month + '-' + day;
+    const year = new Date(date).getFullYear() + "";
+    const month = new Date(date).toLocaleDateString("en", { month: "2-digit" });
+    const day = new Date(date).toLocaleDateString("en", { day: "2-digit" });
+    return year + "-" + month + "-" + day;
   };
 
-  const onValid = (data) => {
+  const onValid = (data: UserFilteringData) => {
     const {
       address,
       backEmail,
@@ -81,7 +86,7 @@ const UserFilteringTable = ({ emailCodeGroup }) => {
       signDateEnd,
       modifyDateStart,
       modifyDateEnd,
-      status,
+      saveStatus,
     } = data;
     const submitData = {
       address: address?.trim() || null,
@@ -97,7 +102,7 @@ const UserFilteringTable = ({ emailCodeGroup }) => {
       signDateEnd: convertDate(signDateEnd) || null,
       modifyDateStart: convertDate(modifyDateStart) || null,
       modifyDateEnd: convertDate(modifyDateEnd) || null,
-      status: status || null,
+      saveStatus: data.saveStatus || null,
       email: convertEmail(frontEmail, backEmail) || null,
     };
 
@@ -105,7 +110,7 @@ const UserFilteringTable = ({ emailCodeGroup }) => {
   };
 
   const openWindow = () => {
-    openNewWindow('admin/insertUser');
+    openNewWindow("admin/insertUser");
   };
 
   return (
@@ -117,9 +122,8 @@ const UserFilteringTable = ({ emailCodeGroup }) => {
               성별
             </label>
             <select
-              name="gender"
               className="mt-2 block w-[30%] rounded-md border-gray-300 shadow-sm"
-              {...register('gender', {
+              {...register("gender", {
                 setValueAs: (v) => inputSetValues(v),
               })}
             >
@@ -134,10 +138,10 @@ const UserFilteringTable = ({ emailCodeGroup }) => {
             placeholder="홍길동"
             htmlFor="name"
             errorMessage={errors?.name?.message}
-            register={register('name', {
+            register={register("name", {
               maxLength: {
                 value: 15,
-                message: '15자 이내로 입력해주세요.',
+                message: "15자 이내로 입력해주세요.",
               },
             })}
           />
@@ -158,7 +162,7 @@ const UserFilteringTable = ({ emailCodeGroup }) => {
             </label>
             <div className="flex items-center space-x-4">
               <select
-                {...register('phone1')}
+                {...register("phone1")}
                 className="bg-transparent outline-none rounded-md w-[20%]  shadow-sm"
               >
                 <option value="">선택</option>
@@ -174,8 +178,8 @@ const UserFilteringTable = ({ emailCodeGroup }) => {
                 <option value="019">019</option>
               </select>
               <input
-                {...register('phone2', {
-                  onChange: (e) => validateForm.inputValid(e, 'phone2', NUMBER),
+                {...register("phone2", {
+                  onChange: (e) => validateForm.inputValid(e, "phone2", NUMBER),
                 })}
                 type="text"
                 className="bg-transparent outline-none rounded-md w-[20%] lg:w-[25%] shadow-sm"
@@ -183,8 +187,8 @@ const UserFilteringTable = ({ emailCodeGroup }) => {
               />
               <span>-</span>
               <input
-                {...register('phone3', {
-                  onChange: (e) => validateForm.inputValid(e, 'phone3', NUMBER),
+                {...register("phone3", {
+                  onChange: (e) => validateForm.inputValid(e, "phone3", NUMBER),
                 })}
                 type="text"
                 maxLength={4}
@@ -197,7 +201,7 @@ const UserFilteringTable = ({ emailCodeGroup }) => {
             label="주소"
             htmlFor="address"
             placeholder="서울특별시 둔촌동 12로"
-            register={register('address')}
+            register={register("address")}
           />
 
           {/* 이메일 */}
@@ -212,10 +216,10 @@ const UserFilteringTable = ({ emailCodeGroup }) => {
             </label>
             <div className="flex items-center space-x-4">
               <input
-                {...register('frontEmail', {
+                {...register("frontEmail", {
                   onChange: (e) => {
                     validateForm.notSpecialString(e);
-                    return validateForm.inputValid(e, 'frontEmail', NUMBER_ENGLISH);
+                    return validateForm.inputValid(e, "frontEmail", NUMBER_ENGLISH);
                   },
                 })}
                 type="text"
@@ -224,7 +228,7 @@ const UserFilteringTable = ({ emailCodeGroup }) => {
               />
               <span>@</span>
               <select
-                {...register('backEmail')}
+                {...register("backEmail")}
                 className="bg-transparent rounded-md p-1 outline-none w-[30%] md:w-[40%] relative text-sm shadow-sm"
               >
                 <option value="">선택</option>
@@ -280,7 +284,7 @@ const UserFilteringTable = ({ emailCodeGroup }) => {
           <div className="flex flex-col w-[50%] shadow-sm">
             <label className="font-bold text-sm mb-2">회원 가입상태</label>
             <select
-              {...register('status', {
+              {...register("saveStatus", {
                 setValueAs: (v) => inputSetValues(v),
               })}
             >

@@ -1,5 +1,18 @@
+import { UseFormRegisterReturn } from 'react-hook-form';
 import cls from '../../utils/cls';
 import FormErrorMessage from '../FormErrorMessage';
+
+interface Props {
+  label?: string;
+  type?: string;
+  htmlFor?: string;
+  register?: UseFormRegisterReturn;
+  maxLength?: number;
+  errorMessage?: string;
+  necessary?: boolean;
+  editPage?: string;
+  placeholder?: string;
+}
 
 const CommonInput = ({
   label,
@@ -11,21 +24,21 @@ const CommonInput = ({
   necessary,
   editPage,
   placeholder,
-}) => {
+}: Props) => {
   return (
-    <div className="flex flex-col space-y-2">
-      <label className="text-sm flex items-center" htmlFor={htmlFor}>
+    <div className='flex flex-col space-y-2'>
+      <label className='text-sm flex items-center' htmlFor={htmlFor}>
         {label}{' '}
         {errorMessage ? (
           <FormErrorMessage errorMessage={errorMessage} />
         ) : (
-          <span className="ml-4 text-sm text-pintalk-dark-yellow">
+          <span className='ml-4 text-sm text-pintalk-dark-yellow'>
             {necessary ? '필수정보입니다.' : null}
           </span>
         )}
       </label>
 
-      <div className="relative">
+      <div className='relative'>
         <input
           {...register}
           type={type}
