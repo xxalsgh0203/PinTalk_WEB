@@ -6,7 +6,7 @@ const useAddress = () => {
   const [address, setAddress] = useState<Address>();
 
   const handleComplete = (data: Address) => {
-    setAddress(address);
+    setAddress(data);
   };
 
   const handleAddress = () => {
@@ -14,7 +14,7 @@ const useAddress = () => {
   };
 
   return {
-    address,
+    address: address?.address,
     handleAddress,
   };
 };

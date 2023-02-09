@@ -1,11 +1,11 @@
-import axios, { AxiosError } from 'axios';
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import HttpError from '../../service/httpError';
+import axios, { AxiosError } from "axios";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import HttpError from "../../service/httpError";
 import {
   UserFilteringData,
   UserListInitialState,
   UserListPayload,
-} from '../../model/interface/userList';
+} from "../../model/interface/userList";
 
 interface ThunkArg {
   page: number;
@@ -13,11 +13,11 @@ interface ThunkArg {
 }
 
 export const getList = createAsyncThunk<UserListPayload, ThunkArg>(
-  'user/GET_USER',
+  "user/GET_USER",
   async ({ page = 0, submitData }, thunkAPI: any) => {
     try {
       const response = await (
-        await axios.get('/userMemberList', {
+        await axios.get("/userMemberList", {
           params: {
             page,
             address: submitData?.address,
@@ -33,7 +33,7 @@ export const getList = createAsyncThunk<UserListPayload, ThunkArg>(
             signDateEnd: submitData?.signDateEnd,
             modifyDateStart: submitData?.modifyDateStart,
             modifyDateEnd: submitData?.modifyDateEnd,
-            status: submitData?.status,
+            savaStatus: submitData?.saveStatus,
             email: submitData?.email,
             saveStatus: submitData?.saveStatus,
           },
@@ -47,7 +47,7 @@ export const getList = createAsyncThunk<UserListPayload, ThunkArg>(
         const statusCode = thunkAPI.rejectWithValue(response.data).payload.status;
         throw new HttpError(statusCode, errorMessage).errorMessage;
       } else {
-        console.error('Unknown Error');
+        console.error("Unknown Error");
       }
     }
   },
@@ -62,7 +62,7 @@ const initialState: UserListInitialState = {
 };
 
 export const userSlice = createSlice({
-  name: 'userList',
+  name: "userList",
   initialState,
   reducers: {
     handlePage(state, action: PayloadAction<number>) {

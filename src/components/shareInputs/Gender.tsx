@@ -1,30 +1,41 @@
+import { UseFormRegisterReturn, UseFormWatch } from 'react-hook-form';
+import { UserRegisterData } from '../../model/interface/userList';
 import cls from '../../utils/cls';
 import FormErrorMessage from '../FormErrorMessage';
 
-const Gender = ({ register, watch, editPage, label, necessary, errorMessage }) => {
-  const checkedMan = watch('gender') === 'M';
-  const checkedWoman = watch('gender') === 'W';
+interface Props {
+  register?: UseFormRegisterReturn;
+  watch?: UseFormWatch<UserRegisterData>;
+  editPage?: boolean;
+  label?: string;
+  necessary?: boolean;
+  errorMessage?: string;
+}
+
+const Gender = ({ register, watch, editPage, label, necessary, errorMessage }: Props) => {
+  const checkedMan = watch && watch('gender') === 'M';
+  const checkedWoman = watch && watch('gender') === 'W';
 
   return (
-    <div className="w-[50%]">
-      <div className="flex items-center">
-        <span className="block mb-2 text-sm">{label}</span>
+    <div className='w-[50%]'>
+      <div className='flex items-center'>
+        <span className='block mb-2 text-sm'>{label}</span>
 
         {errorMessage ? (
           <FormErrorMessage errorMessage={errorMessage} />
         ) : (
-          <span className="text-sm text-pintalk-dark-yellow">
+          <span className='text-sm text-pintalk-dark-yellow'>
             {' '}
             {necessary ? '필수정보입니다.' : null}
           </span>
         )}
       </div>
-      <div className="flex items-center space-x-4 mt-1">
-        <label className="text-sm" htmlFor="M">
+      <div className='flex items-center space-x-4 mt-1'>
+        <label className='text-sm' htmlFor='M'>
           <input
             {...register}
-            type="radio"
-            value="M"
+            type='radio'
+            value='M'
             checked={checkedMan}
             className={cls(
               checkedMan ? 'bg-pintalk-dark-yellow' : 'bg-gray-100',
@@ -32,14 +43,14 @@ const Gender = ({ register, watch, editPage, label, necessary, errorMessage }) =
               errorMessage ? 'ring-1 ring-offset-1 ring-red-500' : '',
             )}
           />
-          <span className="text-sm">남</span>
+          <span className='text-sm'>남</span>
         </label>
 
-        <label htmlFor="G">
+        <label htmlFor='G'>
           <input
-            type="radio"
-            value="W"
-            checked={watch('gender') === 'W'}
+            type='radio'
+            value='W'
+            checked={watch && watch('gender') === 'W'}
             {...register}
             className={cls(
               'appearance-none w-3 h-3 rounded-full transition-all cursor-pointer mr-1',
@@ -47,7 +58,7 @@ const Gender = ({ register, watch, editPage, label, necessary, errorMessage }) =
               errorMessage ? 'ring-1 ring-offset-1 ring-red-500' : '',
             )}
           />
-          <span className="text-sm">여</span>
+          <span className='text-sm'>여</span>
         </label>
       </div>
     </div>
