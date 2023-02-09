@@ -1,10 +1,12 @@
-import Sidebar from './Sidebar';
+import Sidebar from "./Sidebar";
 
 const UserRegisterAccount = () => {
   return (
     <>
-      <Sidebar></Sidebar>
-      <div>계좌 등록</div>
+      <div className="flex">
+        <Sidebar></Sidebar>
+        <div>계좌 등록</div>
+      </div>
     </>
   );
 };
