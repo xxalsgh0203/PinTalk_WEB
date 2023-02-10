@@ -1,4 +1,10 @@
-const LoginLayout = ({ children }) => {
+import React from "react";
+
+interface Props {
+  children: React.ReactNode;
+}
+
+const LoginLayout = ({ children }: Props) => {
   return (
     <div className="px-4 2xl:px-0 flex justify-center items-center min-h-screen bg-gray-50">
       <div className="min-h-screen hidden 2xl:block 2xl:w-[50%] relative">
