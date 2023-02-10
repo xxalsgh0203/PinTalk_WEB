@@ -1,6 +1,10 @@
-import logo from '../../asset/pinbank_icon.png';
+const logo = require("../../asset/pinbank_icon.png");
 
-const LoginTitle = ({ title }) => {
+interface Props {
+  title: string;
+}
+
+const LoginTitle = ({ title }: Props) => {
   return (
     <>
       <div className="flex items-end mb-10 absolute top-10">
