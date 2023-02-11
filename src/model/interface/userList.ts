@@ -16,7 +16,7 @@ export interface UserInfo {
   email?: string;
   gender?: string;
   id?: string;
-  jobkey?: string;
+  job_key?: string;
   modifyDate?: Date;
   name?: string;
   no?: number;
@@ -32,6 +32,7 @@ export interface UserInfo {
   ssn1?: string;
   ssn2?: string;
   update_Date?: Date;
+  admin_yn: "N";
 }
 
 export interface PageInfo {
@@ -61,18 +62,20 @@ export interface UserFilteringData {
   backEmail?: string | null;
 }
 
-export interface UserRegisterData {
+export interface UserSubmitData {
   email?: string;
   address1?: string;
   address2?: string;
   gender: string;
   id: string;
-  jobkey?: string;
+  job_key?: string;
+  job?: string;
   name: string;
   password: string;
   phone1?: string;
   phone2?: string;
   phone3?: string;
+  ssn?: string;
   ssn1: string;
   ssn2: string;
   frontEmail?: string;

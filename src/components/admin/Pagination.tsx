@@ -1,19 +1,26 @@
-import { useDispatch } from 'react-redux';
-import { userSlice } from '../../redux/slices/userSlice';
-import cls from '../../utils/cls';
+import { useDispatch } from "react-redux";
+import { PageInfo } from "../../model/interface/userList";
+import { userSlice } from "../../redux/slices/userSlice";
+import cls from "../../utils/cls";
 
-function Pagination({ PageInfo }) {
+interface Props {
+  PageInfo?: PageInfo;
+}
+
+function Pagination({ PageInfo }: Props) {
   const pageDispatch = useDispatch();
 
   const handlePrevPage = () => {
+    if (!PageInfo) return;
     pageDispatch(userSlice.actions.handlePage(PageInfo?.currPage - 1));
   };
 
   const handleAfterPage = () => {
+    if (!PageInfo) return;
     pageDispatch(userSlice.actions.handlePage(PageInfo?.currPage + 1));
   };
 
-  const handlePageChange = (p) => {
+  const handlePageChange = (p: number) => {
     pageDispatch(userSlice.actions.handlePage(p));
   };
 
@@ -22,21 +29,21 @@ function Pagination({ PageInfo }) {
       <nav className="flex justify-center items-center mt-6 rounded-1g font-[Poppins]">
         <button
           className="mr-3 sm:mr-6 hover:font-bold p-1 cursor-pointer hover:scale-110 transition-all text-gray-500 hover:text-pintalk-dark-brown"
-          disabled={PageInfo?.currPage - 1 === -1}
+          disabled={PageInfo && PageInfo?.currPage - 1 === -1}
           onClick={handlePrevPage}
         >
           &lt;
         </button>
         <div className="sm:space-x-4">
           {Array(PageInfo?.totalPage)
-            .fill()
+            .fill(PageInfo?.totalPage)
             .map((_, i) => (
               <button
                 className={cls(
-                  'w-6 h-6 sm:w-8 sm:h-8 text-sm sm:text-xl font-bold',
+                  "w-6 h-6 sm:w-8 sm:h-8 text-sm sm:text-xl font-bold",
                   i === PageInfo?.currPage
-                    ? 'bg-pintalk-dark-yellow text-white rounded-full'
-                    : 'hover:text-gray-400 transition-all',
+                    ? "bg-pintalk-dark-yellow text-white rounded-full"
+                    : "hover:text-gray-400 transition-all",
                 )}
                 key={i}
                 onClick={() => handlePageChange(i)}
@@ -49,7 +56,7 @@ function Pagination({ PageInfo }) {
         </div>
         <button
           className="ml-3 sm:ml-6 hover:font-bold p-1 cursor-pointer hover:scale-110 transition-all text-gray-500 hover:text-pintalk-dark-brown"
-          disabled={PageInfo?.currPage + 1 === PageInfo?.totalPage}
+          disabled={PageInfo && PageInfo?.currPage + 1 === PageInfo?.totalPage}
           onClick={handleAfterPage}
         >
           &gt;

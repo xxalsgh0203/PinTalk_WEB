@@ -1,12 +1,18 @@
-import { useRef } from 'react';
-import { calculateMonthWithDay, calculateYear } from '../../../../utils/calculateDatePicker';
-import { inputSetValues } from '../../../../utils/validateForm';
-import BirthSelector from './BirthSelector';
+import { useRef } from "react";
+import { UseFormRegister } from "react-hook-form";
+import { UserFilteringData } from "../../../../model/interface/userList";
+import { calculateMonthWithDay, calculateYear } from "../../../../utils/calculateDatePicker";
+import { inputSetValues } from "../../../../utils/validateForm";
+import BirthSelector from "./BirthSelector";
 
-const BirthPicker = ({ register }) => {
-  const yearRef = useRef();
-  const monthRef = useRef();
-  const dayRef = useRef();
+interface Props {
+  register: UseFormRegister<UserFilteringData>;
+}
+
+const BirthPicker = ({ register }: Props) => {
+  const yearRef = useRef<HTMLSelectElement>(null);
+  const monthRef = useRef<HTMLSelectElement>(null);
+  const dayRef = useRef<HTMLSelectElement>(null);
   const yearRange = calculateYear();
   const monthRange = calculateMonthWithDay(12);
   const dayRange = calculateMonthWithDay(31);
@@ -18,7 +24,7 @@ const BirthPicker = ({ register }) => {
         {/* 년 */}
         <div className="">
           <BirthSelector
-            register={register('year', {
+            register={register("year", {
               onChange: (e) => {
                 e.target.size = 1;
                 e.target.blur();
@@ -31,13 +37,12 @@ const BirthPicker = ({ register }) => {
             selectorRef={yearRef}
             dateRange={yearRange}
             title="년"
-            yearSize
           />
         </div>
         {/* 월 */}
         <div className="flex items-center">
           <BirthSelector
-            register={register('month', {
+            register={register("month", {
               onChange: (e) => {
                 e.target.size = 1;
                 e.target.blur();
@@ -54,7 +59,7 @@ const BirthPicker = ({ register }) => {
         </div>
         {/* 일 */}
         <BirthSelector
-          register={register('day', {
+          register={register("day", {
             onChange: (e) => {
               e.target.size = 1;
               e.target.blur();

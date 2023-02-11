@@ -1,14 +1,17 @@
-import MainLogo from '../MainLogo';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { AiOutlineClose } from 'react-icons/ai';
-import { useState } from 'react';
+import { GiHamburgerMenu } from "react-icons/gi";
+import { AiOutlineClose } from "react-icons/ai";
+import { useState } from "react";
 
-import cls from '../../../utils/cls';
-import { navbarsAdmin } from '../../../data/navbar/navbars';
-import SideNavbar from './sideNavbar/SideNavbar';
-import { Link } from 'react-router-dom';
+import cls from "../../../utils/cls";
+import { navbarsAdmin } from "../../../data/navbar/navbars";
+import SideNavbar from "./sideNavbar/SideNavbar";
+import { Link } from "react-router-dom";
 
-const AdminNavbar = ({ title }) => {
+interface Props {
+  title: string;
+}
+
+const AdminNavbar = ({ title }: Props) => {
   const [isActive, setIsActive] = useState(false);
   return (
     <div>
@@ -18,7 +21,7 @@ const AdminNavbar = ({ title }) => {
             <span
               onClick={() => setIsActive((prev) => !prev)}
               className={cls(
-                'text-amber-500 hover:text-amber-600 transition-all cursor-pointer inline-block',
+                "text-amber-500 hover:text-amber-600 transition-all cursor-pointer inline-block",
               )}
             >
               {isActive ? <AiOutlineClose size={30} /> : <GiHamburgerMenu size={30} />}

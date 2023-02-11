@@ -19,7 +19,7 @@ interface Props {
 const DatePicker = ({ label, Controller, control, name, textEnd }: Props) => {
   const yearRef = useRef<HTMLSelectElement>(null);
   const monthRef = useRef<HTMLSelectElement>(null);
-  const years = calculateYear("number");
+  const years = calculateYear();
   const months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
   const handleClick = (e: React.MouseEvent<HTMLElement>, monthHandler: () => void) => {
     e.preventDefault();

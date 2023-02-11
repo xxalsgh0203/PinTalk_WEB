@@ -1,22 +1,25 @@
-import logo from '../../asset/pinbank_icon.png';
+import logo from "../../asset/pinbank_icon.png";
+import useWindowSize from "../../hooks/useWindowSize";
+import SubNavbar from "./SubNavbar";
+const mainUrl = "https://ifh.cc/g/SwrsvO.png";
 
-import useWindowSize from '../../hooks/useWindowSize';
-import SubNavbar from './SubNavbar';
+export interface HeaderNavs {
+  title: "계좌조회" | "계좌이체" | "이체내역";
+  id: "allAccount" | "transfer" | "transferList";
+}
 
-const mainUrl = 'https://ifh.cc/g/SwrsvO.png';
-
-const subNavbar = [
+const subNavbar: HeaderNavs[] = [
   {
-    title: '계좌조회',
-    id: 'allAccount',
+    title: "계좌조회",
+    id: "allAccount",
   },
   {
-    title: '계좌이체',
-    id: 'transfer',
+    title: "계좌이체",
+    id: "transfer",
   },
   {
-    title: '이체내역',
-    id: 'transferList',
+    title: "이체내역",
+    id: "transferList",
   },
 ];
 
@@ -46,8 +49,8 @@ const Header = () => {
       </div>
 
       <div className="absolute w-full h-48 flex items-center  justify-evenly px-10 space-x-10">
-        {subNavbar.map((item, index) => (
-          <SubNavbar key={item.id} {...item} index={index} />
+        {subNavbar.map((item) => (
+          <SubNavbar key={item.id} {...item} />
         ))}
       </div>
 

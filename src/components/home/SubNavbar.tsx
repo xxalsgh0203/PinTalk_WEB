@@ -1,24 +1,25 @@
-import { BiTransferAlt } from 'react-icons/bi';
-import { AiOutlineAccountBook, AiFillCheckCircle } from 'react-icons/ai';
+import { BiTransferAlt } from "react-icons/bi";
+import { AiOutlineAccountBook, AiFillCheckCircle } from "react-icons/ai";
+import { HeaderNavs } from "./Header";
 
-const SubNavbar = ({ id, title }) => {
+const SubNavbar = ({ id, title }: HeaderNavs) => {
   return (
     <div key={id} className={`h-full w-60 rounded-lg relative cursor-pointer shadow-lg `}>
       <div className="z-10 w-full absolute flex flex-col items-center justify-center h-full space-y-4 hover:opacity-60 transition-all">
         <div>
-          {id === 'allAccount' && (
+          {id === "allAccount" && (
             <div className="text-teal-600">
               <AiOutlineAccountBook size={40} />
             </div>
           )}
 
-          {id === 'transfer' && (
+          {id === "transfer" && (
             <div className="text-orange-600">
               <BiTransferAlt size={40} />
             </div>
           )}
 
-          {id === 'transferList' && (
+          {id === "transferList" && (
             <div className="text-sky-500">
               <AiFillCheckCircle size={40} />
             </div>

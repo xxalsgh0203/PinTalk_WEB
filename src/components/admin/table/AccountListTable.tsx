@@ -1,4 +1,4 @@
-import AccountFilteringTable from '../filtering/AccountFilteringTable';
+import AccountFilteringTable from "../filtering/AccountFilteringTable";
 
 const AccountListTable = () => {
   return (

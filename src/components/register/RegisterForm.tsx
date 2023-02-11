@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 import Loading from "../Loading";
 import useAddress from "../../hooks/useAddress";
-import { UserRegisterData } from "../../model/interface/userList";
+import { UserSubmitData } from "../../model/interface/userList";
 
 const validateForm = new ValidateForm();
 const RegisterForm = () => {
@@ -26,11 +26,11 @@ const RegisterForm = () => {
     formState: { errors },
     setValue,
     setError,
-  } = useForm<UserRegisterData>({
+  } = useForm<UserSubmitData>({
     mode: "onChange",
   });
 
-  const onValid = (data: UserRegisterData) => {
+  const onValid = (data: UserSubmitData) => {
     const email = data.frontEmail && data.frontEmail + "@" + data.backEmail;
     const ssn = data.ssn1 + data.ssn2;
     const phone1 = data.phone2 && data.phone3 ? data.phone1 : null;
