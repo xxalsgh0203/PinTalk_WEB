@@ -1,13 +1,18 @@
-import { useState } from 'react';
-import { AiOutlineUp } from 'react-icons/ai';
-import cls from '../../../../utils/cls';
-import SideSubNavItems from './SideSubNavItems';
+import { useState } from "react";
+import { AiOutlineUp } from "react-icons/ai";
+import cls from "../../../../utils/cls";
+import SideSubNavItems from "./SideSubNavItems";
 
-const SideSubNavs = ({ title, id }) => {
+interface Props {
+  title?: string;
+  id?: string;
+}
+
+const SideSubNavs = ({ title, id }: Props) => {
   const [isActive, setIsActive] = useState(false);
-  const [target, setTarget] = useState('');
+  const [target, setTarget] = useState("");
 
-  const handleActiveItem = (e) => {
+  const handleActiveItem = (e: React.MouseEvent<HTMLSpanElement>) => {
     setTarget(e.currentTarget.id);
     setIsActive((prev) => !prev);
   };
@@ -25,8 +30,8 @@ const SideSubNavs = ({ title, id }) => {
           >
             <span
               className={cls(
-                isActive ? 'rotate-180' : 'rotate-0',
-                'flex transition-all text-gray-500 hover:text-gray-400 items-center',
+                isActive ? "rotate-180" : "rotate-0",
+                "flex transition-all text-gray-500 hover:text-gray-400 items-center",
               )}
             >
               <AiOutlineUp size={20} />

@@ -1,6 +1,11 @@
-import AdminNavbar from '../layout/navbar/AdminNavbar';
+import AdminNavbar from "../layout/navbar/AdminNavbar";
 
-const AdminLayout = ({ children, title }) => {
+interface Props {
+  children: React.ReactNode;
+  title: string;
+}
+
+const AdminLayout = ({ children, title }: Props) => {
   return (
     <section>
       <AdminNavbar title={title} />

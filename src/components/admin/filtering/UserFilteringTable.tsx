@@ -13,7 +13,7 @@ import FilteringButton from "./FilteringButton";
 import FilteringInput from "./FilteringInput";
 
 interface Props {
-  emailCodeGroup: CodeEmail[];
+  emailCodeGroup?: CodeEmail[];
 }
 
 const validateForm = new ValidateForm();

@@ -1,8 +1,8 @@
-import FormErrorMessage from '../../FormErrorMessage';
-import FilteringButton from './FilteringButton';
-import FilteringInput from './FilteringInput';
-import { useForm } from 'react-hook-form';
-import ValidateForm, { inputSetValues, NUMBER } from '../../../utils/validateForm';
+import FormErrorMessage from "../../FormErrorMessage";
+import FilteringButton from "./FilteringButton";
+import FilteringInput from "./FilteringInput";
+import { useForm } from "react-hook-form";
+import ValidateForm, { inputSetValues, NUMBER } from "../../../utils/validateForm";
 
 const validateForm = new ValidateForm();
 const AccountFilteringTable = () => {
@@ -13,7 +13,7 @@ const AccountFilteringTable = () => {
     control,
   } = useForm();
 
-  const handleSearch = (data) => {
+  const handleSearch = (data: any) => {
     console.log(data);
   };
 
@@ -26,9 +26,8 @@ const AccountFilteringTable = () => {
               성별
             </label>
             <select
-              name="gender"
               className="mt-2 block w-[30%] rounded-md border-gray-300 shadow-sm"
-              {...register('gender', {
+              {...register("gender", {
                 setValueAs: (v) => inputSetValues(v),
               })}
             >
@@ -42,11 +41,11 @@ const AccountFilteringTable = () => {
             label="예금주명"
             placeholder="홍길동"
             htmlFor="name"
-            errorMessage={errors?.name?.message}
-            register={register('name', {
+            errorMessage={errors?.name?.message?.toString()}
+            register={register("name", {
               maxLength: {
                 value: 15,
-                message: '15자 이내로 입력해주세요.',
+                message: "15자 이내로 입력해주세요.",
               },
             })}
           />
@@ -55,15 +54,15 @@ const AccountFilteringTable = () => {
             label="계좌번호"
             placeholder="1**********1"
             htmlFor="acc_num"
-            errorMessage={errors?.name?.message}
-            register={register('name', {
+            errorMessage={errors?.name?.message?.toString()}
+            register={register("name", {
               maxLength: {
                 value: 15,
-                message: '15자 이내로 입력해주세요.',
+                message: "15자 이내로 입력해주세요.",
               },
               onChange: (e) => {
                 validateForm.notSpecialString(e);
-                return validateForm.inputValid(e, 'frontEmail', NUMBER);
+                return validateForm.inputValid(e, "frontEmail", NUMBER);
               },
             })}
           />
@@ -71,7 +70,7 @@ const AccountFilteringTable = () => {
           <div className="flex flex-col w-[50%] shadow-sm">
             <label className="font-bold text-sm mb-2">개설 기관</label>
             <select
-              {...register('status', {
+              {...register("status", {
                 setValueAs: (v) => inputSetValues(v),
               })}
             >
@@ -84,7 +83,7 @@ const AccountFilteringTable = () => {
           <div className="flex flex-col w-[50%] shadow-sm">
             <label className="font-bold text-sm mb-2">계좌 상태</label>
             <select
-              {...register('status', {
+              {...register("status", {
                 setValueAs: (v) => inputSetValues(v),
               })}
             >
@@ -97,7 +96,7 @@ const AccountFilteringTable = () => {
           <div className="flex flex-col w-[50%] shadow-sm">
             <label className="font-bold text-sm mb-2">계좌 종류</label>
             <select
-              {...register('status', {
+              {...register("status", {
                 setValueAs: (v) => inputSetValues(v),
               })}
             >

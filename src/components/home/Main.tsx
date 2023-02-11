@@ -1,11 +1,12 @@
-import Header from '../home/Header';
-import { BsChevronCompactDown } from 'react-icons/bs';
-import { useRef } from 'react';
+import Header from "./Header";
+import { BsChevronCompactDown } from "react-icons/bs";
+import { useRef } from "react";
 
 const Main = () => {
-  const nextSectionRef = useRef(null);
+  const nextSectionRef = useRef<HTMLElement>(null);
   const handleNextSection = () => {
-    nextSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (!nextSectionRef.current) return;
+    nextSectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
   };
   return (
     <div>

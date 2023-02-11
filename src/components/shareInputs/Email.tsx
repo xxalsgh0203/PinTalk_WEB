@@ -1,17 +1,17 @@
 import { UseFormRegister, UseFormWatch } from "react-hook-form";
-import { UserRegisterData } from "../../model/interface/userList";
+import { UserSubmitData } from "../../model/interface/userList";
 import cls from "../../utils/cls";
 import ValidateForm, { NUMBER_ENGLISH } from "../../utils/validateForm";
 import FormErrorMessage from "../FormErrorMessage";
 
 interface Props {
-  register: UseFormRegister<UserRegisterData>;
+  register: UseFormRegister<UserSubmitData>;
   errorMessage?: string;
   validateForm?: ValidateForm;
   email1?: string;
   email2?: string;
-  watch?: UseFormWatch<UserRegisterData>;
-  editPage?: string;
+  watch?: UseFormWatch<UserSubmitData>;
+  editPage?: boolean;
 }
 
 const Email = ({

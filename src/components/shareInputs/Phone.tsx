@@ -1,12 +1,12 @@
 import { UseFormRegister, UseFormWatch } from "react-hook-form";
-import { UserRegisterData } from "../../model/interface/userList";
+import { UserSubmitData } from "../../model/interface/userList";
 import cls from "../../utils/cls";
 import ValidateForm, { NUMBER } from "../../utils/validateForm";
 import FormErrorMessage from "../FormErrorMessage";
 
 interface Props {
-  register: UseFormRegister<UserRegisterData>;
-  watch?: UseFormWatch<UserRegisterData>;
+  register: UseFormRegister<UserSubmitData>;
+  watch?: UseFormWatch<UserSubmitData>;
   errorMessage?: string;
   validateForm?: ValidateForm;
   phone1?: string;

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { UseFormRegister } from "react-hook-form";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { UserRegisterData } from "../../model/interface/userList";
+import { UserSubmitData } from "../../model/interface/userList";
 import cls from "../../utils/cls";
 import FormErrorMessage from "../FormErrorMessage";
 
 interface Props {
   label?: string;
   htmlFor?: string;
-  register: UseFormRegister<UserRegisterData>;
+  register: UseFormRegister<UserSubmitData>;
   errorMessage?: string;
   necessary?: boolean;
   upassword?: string;

@@ -1,10 +1,10 @@
-export function calculateYear(number: string) {
+export function calculateYear() {
   const limit = 100;
   const maxYear = new Date().getFullYear();
   const minYear = maxYear - limit;
   let rangeYear = [];
   for (let i = maxYear; i >= minYear; i--) {
-    rangeYear.push(i);
+    rangeYear.push(i + "");
   }
   return rangeYear;
 }

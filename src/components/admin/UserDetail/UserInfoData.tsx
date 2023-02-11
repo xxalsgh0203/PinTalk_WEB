@@ -4,7 +4,7 @@ import Gender from "../../shareInputs/Gender";
 import SSN from "../../shareInputs/SSN";
 import Phone from "../../shareInputs/Phone";
 import Email from "../../shareInputs/Email";
-import ValidateForm, { NOT_NUMBER, NUMBER, NUMBER_ENGLISH } from "../../../utils/validateForm";
+import ValidateForm, { NOT_NUMBER, NUMBER } from "../../../utils/validateForm";
 import Password from "../../shareInputs/Password";
 import Status from "../../shareInputs/Status";
 import { useEffect } from "react";
@@ -12,19 +12,26 @@ import EditCloseButton from "./EditCloseButton";
 import useMutation from "../../../hooks/useMutation";
 import Sidebar from "./Sidebar";
 import useAddress from "../../../hooks/useAddress";
+import { UserInfo, UserSubmitData } from "../../../model/interface/userList";
 
 const validateForm = new ValidateForm();
 
-const UserInfoData = ({ userInfo }) => {
+interface Props {
+  userInfo: UserInfo[];
+}
+
+const UserInfoData = ({ userInfo }: Props) => {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
     setValue,
-  } = useForm({
+  } = useForm<UserSubmitData>({
     mode: "onChange",
   });
+
+  console.log("userInfo", userInfo);
 
   const { error, loading, mutation, data } = useMutation("/userMemberDetailModify");
   const { address, handleAddress } = useAddress();
@@ -47,34 +54,42 @@ const UserInfoData = ({ userInfo }) => {
 
   useEffect(() => {
     if (userInfo[0]) {
-      setValue("name", userInfo[0].name === null ? "" : userInfo[0].name);
-      setValue("gender", userInfo[0].gender === null ? "" : userInfo[0].gender);
-      setValue("ssn1", userInfo[0].ssn1 === null ? "" : userInfo[0].ssn1);
-      setValue("ssn2", userInfo[0].ssn2 === null ? "" : userInfo[0].ssn2);
-      setValue("phone1", userInfo[0].phone1 === null ? "" : userInfo[0].phone1);
-      setValue("phone2", userInfo[0].phone2 === null ? "" : userInfo[0].phone2);
-      setValue("phone3", userInfo[0].phone3 === null ? "" : userInfo[0].phone3);
-      setValue("id", userInfo[0].id === null ? "" : userInfo[0].id);
-      // setValue('password', userInfo[0].password === null ? '' : userInfo[0].password);
-      setValue("address1", userInfo[0].address1 === null ? "" : userInfo[0].address1);
-      setValue("address2", userInfo[0].address2 === null ? "" : userInfo[0].address2);
-      setValue(
-        "frontEmail",
-        userInfo[0].email === null ? "example" : userInfo[0].email.split("@")[0],
-      );
-      setValue(
-        "backEmail",
-        userInfo[0].email === null ? "email.com" : userInfo[0].email.split("@")[1],
-      );
-      setValue("job_key", userInfo[0].job_key === null ? "" : userInfo[0].job_key);
-      setValue("saveStatus", userInfo[0].saveStatus === null ? "" : userInfo[0].saveStatus);
+      const {
+        name,
+        gender,
+        ssn1,
+        ssn2,
+        id,
+        address1,
+        address2,
+        phone1,
+        phone2,
+        phone3,
+        email,
+        job_key,
+        saveStatus,
+      } = userInfo[0];
+      name && setValue("name", name);
+      gender && setValue("gender", gender);
+      ssn1 && setValue("ssn1", ssn1);
+      ssn2 && setValue("ssn2", ssn2);
+      phone1 && setValue("phone1", phone1);
+      phone2 && setValue("phone2", phone2 === null ? "" : phone2);
+      phone3 && setValue("phone3", phone3 === null ? "" : phone3);
+      id && setValue("id", id);
+      address1 && setValue("address1", address1);
+      address2 && setValue("address2", address2);
+      email && setValue("frontEmail", email === null ? "example" : email?.split("@")[0]);
+      email && setValue("backEmail", email === null ? "email.com" : email?.split("@")[1]);
+      job_key && setValue("job_key", job_key);
+      saveStatus && setValue("saveStatus", saveStatus);
     }
   }, [userInfo[0]]);
 
-  const onValid = (data) => {
+  const onValid = (data: UserSubmitData) => {
     const email = data.frontEmail && data.frontEmail + "@" + data.backEmail;
     const phone1 = data.phone2 && data.phone3 ? data.phone1 : null;
-    const address = data.address1 + data.address2 || null;
+    const address = (data.address1 && data.address2 && data.address1 + data.address2) || null;
     const ssn = data.ssn1 + data.ssn2 || null;
 
     const submitData = {
@@ -123,11 +138,9 @@ const UserInfoData = ({ userInfo }) => {
                           register={register("name", {
                             onChange: (e) => validateForm.inputValid(e, "name", NOT_NUMBER),
                           })}
-                          errorMessage={errors.name?.message}
+                          errorMessage={errors.name?.message?.toString()}
                           htmlFor="name"
                           maxLength={10}
-                          // placeholder={userInfo[0]?.name}
-                          // defaultValue={userInfo[0]?.name}
                           editPage
                         />
                       </td>
@@ -242,15 +255,9 @@ const UserInfoData = ({ userInfo }) => {
                           watch={watch}
                           validateForm={validateForm}
                           errorMessage={errors.frontEmail?.message || errors.backEmail?.message}
-                          email1={
-                            userInfo[0]?.email === null
-                              ? "example"
-                              : userInfo[0]?.email.split("@")[0]
-                          }
+                          email1={userInfo[0]?.email ? userInfo[0]?.email.split("@")[0] : "example"}
                           email2={
-                            userInfo[0]?.email === null
-                              ? "email.com"
-                              : userInfo[0]?.email.split("@")[1]
+                            userInfo[0]?.email ? userInfo[0]?.email.split("@")[1] : "email.com"
                           }
                           editPage
                         />
@@ -295,13 +302,13 @@ const UserInfoData = ({ userInfo }) => {
                         가입일자
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        {userInfo[0]?.reg_Date.slice(0, 10)}
+                        {userInfo[0]?.reg_Date?.toString().slice(0, 10)}
                       </td>
                       <td className="px-6 py-4 bg-gray-100 whitespace-nowrap text-sm font-medium text-gray-900">
                         정보변경일자
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        {userInfo[0]?.update_Date.slice(0, 10)}
+                        {userInfo[0]?.update_Date?.toString().slice(0, 10)}
                       </td>
                     </tr>
                   </tbody>

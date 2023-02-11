@@ -1,13 +1,18 @@
-import { navbarsAccount } from '../../../../data/navbar/navbars';
-import cls from '../../../../utils/cls';
-import { Link } from 'react-router-dom';
+import { navbarsAccount } from "../../../../data/navbar/navbars";
+import cls from "../../../../utils/cls";
+import { Link } from "react-router-dom";
 
-const SideSubNavItems = ({ target, isActive }) => {
-  const handleItems = (target) => {
+interface Props {
+  target: string;
+  isActive: boolean;
+}
+
+const SideSubNavItems = ({ target, isActive }: Props) => {
+  const handleItems = (target: string) => {
     switch (target) {
-      case '계좌':
+      case "계좌":
         return navbarsAccount;
-      case '이체':
+      case "이체":
         return navbarsAccount;
       default:
         break;
@@ -18,8 +23,8 @@ const SideSubNavItems = ({ target, isActive }) => {
     <div className="relative">
       <ul
         className={cls(
-          isActive ? `scale-y-100 h-full` : 'scale-y-0 h-0',
-          'w-full origin-top-left transition-all pl-10 flex',
+          isActive ? `scale-y-100 h-full` : "scale-y-0 h-0",
+          "w-full origin-top-left transition-all pl-10 flex",
         )}
       >
         <div className="absolute h-full w-1 border-2 mr-10 " />

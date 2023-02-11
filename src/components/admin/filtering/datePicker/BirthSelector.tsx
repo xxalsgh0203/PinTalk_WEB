@@ -1,6 +1,14 @@
-import cls from '../../../../utils/cls';
+import { UseFormRegisterReturn } from "react-hook-form";
+import cls from "../../../../utils/cls";
 
-const BirthSelector = ({ selectorRef, dateRange, title, yearSize, register }) => {
+interface Props {
+  selectorRef: React.MutableRefObject<HTMLSelectElement | null>;
+  dateRange: string[];
+  title: string;
+  register: UseFormRegisterReturn;
+}
+
+const BirthSelector = ({ selectorRef, dateRange, title, register }: Props) => {
   const { ref, ...rest } = { ...register };
 
   return (
@@ -13,10 +21,11 @@ const BirthSelector = ({ selectorRef, dateRange, title, yearSize, register }) =>
         }}
         {...rest}
         className={cls(
-          'absolute z-10 border-2 border-gray-200 rounded-md bg-clip-padding',
-          'w-[105px]',
+          "absolute z-10 border-2 border-gray-200 rounded-md bg-clip-padding",
+          "w-[105px]",
         )}
         onFocus={() => {
+          if (!selectorRef.current) return;
           selectorRef.current.size = 10;
         }}
       >
