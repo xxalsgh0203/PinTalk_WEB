@@ -12,7 +12,7 @@ const SideNavbar = ({ active, navItems }: Props) => {
     <div
       className={cls(
         active ? "scale-x-100" : "scale-x-0",
-        "fixed origin-bottom-left top-[60px] w-full z-50 transition-all",
+        "fixed origin-bottom-left top-[70px] w-full z-50 transition-all",
       )}
     >
       <ul className="bg-gray-50 shadow-sm shadow-black  w-[60vw] lg:w-[30vw] h-screen">

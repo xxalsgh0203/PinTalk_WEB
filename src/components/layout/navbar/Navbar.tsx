@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-import cls from "../../../utils/cls";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import useWindowSize from "../../../hooks/useWindowSize";
@@ -22,7 +21,7 @@ const Navbar = ({ title }: Props) => {
 
   return (
     <div className="relative">
-      <div className={cls("flex items-center justify-between p-4 bg-white")}>
+      <div className="flex items-center justify-between p-4 bg-white">
         <MainLogo />
         <h1>{title}</h1>
 
