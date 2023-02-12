@@ -80,7 +80,7 @@ export interface UserSubmitData {
   ssn2: string;
   frontEmail?: string;
   backEmail?: string;
-  savaStatus?: any;
+  saveStatus?: string;
   res_cnt?: number;
   error?: {
     message: string;

@@ -41,6 +41,7 @@ const CommonInput = ({
       <div className="relative">
         <input
           {...register}
+          autoComplete=""
           type={type}
           maxLength={maxLength}
           placeholder={placeholder}
