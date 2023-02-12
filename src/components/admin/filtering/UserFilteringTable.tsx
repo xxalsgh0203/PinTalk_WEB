@@ -49,7 +49,7 @@ const UserFilteringTable = ({ emailCodeGroup }: Props) => {
       modifyDateEnd: null,
       ssn1: null,
       ssn2: null,
-      status: null,
+      saveStatus: null,
     }));
   };
 
@@ -102,7 +102,7 @@ const UserFilteringTable = ({ emailCodeGroup }: Props) => {
       signDateEnd: convertDate(signDateEnd) || null,
       modifyDateStart: convertDate(modifyDateStart) || null,
       modifyDateEnd: convertDate(modifyDateEnd) || null,
-      saveStatus: data.saveStatus || null,
+      saveStatus: saveStatus || null,
       email: convertEmail(frontEmail, backEmail) || null,
     };
 

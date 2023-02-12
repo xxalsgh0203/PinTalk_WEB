@@ -70,6 +70,7 @@ const Password = ({
                   },
                 },
           )}
+          autoComplete="current-password"
           type={showPassword ? "text" : "password"}
           maxLength={15}
           placeholder={editPage ? upassword : ""}

@@ -41,9 +41,8 @@ const Phone = ({
             },
           })}
           className={cls(
-            editPage
-              ? "bg-transparent p-1 outline-none text-sm border-2 rounded-md text-pintalk-dark-brown w-[25%]"
-              : "bg-transparent p-1 outline-none text-sm border-2 rounded-md text-pintalk-dark-brown w-[15%]",
+            editPage ? "w-[25%]" : "w-[15%]",
+            "bg-transparent p-1 outline-none text-sm border-2 rounded-md text-pintalk-dark-brown ",
           )}
         >
           {editPage ? <option value={phone1}>{phone1}</option> : <option value="">선택</option>}
@@ -95,11 +94,7 @@ const Phone = ({
           type="text"
           maxLength={4}
           placeholder={editPage ? phone2 : ""}
-          className={
-            editPage
-              ? "bg-transparent rounded-md p-1 px-3 outline-none border-2 transition-all w-[50%]"
-              : "bg-transparent rounded-md p-1 px-3 outline-none border-2 transition-all w-[50%]"
-          }
+          className="bg-transparent rounded-md p-1 px-3 outline-none border-2 transition-all w-[50%]"
         />
         <span>-</span>
         <input
