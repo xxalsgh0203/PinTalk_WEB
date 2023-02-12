@@ -10,9 +10,11 @@ const UserAccounts = () => {
         <div className="pl-6 pr-6 pt-6 mb-12 w-full">
           <div className="flex">
             <img className="object-contain h-10 pr-2 w-10 flex" src={searchIcon}></img>
-            <h1 className="text-kukmin-dark-brown font-bold text-2xl w-full">전체 계좌 간편조회</h1>
+            <h1 className="text-2xl py-1 pl-1 text-pintalk-dark-brown text-semibold">
+              회원 상세 정보
+            </h1>
           </div>
-          <hr className="w-full h-0.5 bg-gray-100 border-0 rounded my-10 dark:bg-gray-700" />
+          <hr className="w-full h-0.5 bg-pintalk-dark-brown border-0 rounded my-10" />
 
           <select className="mt-12">
             <option key="banana" value="bank">

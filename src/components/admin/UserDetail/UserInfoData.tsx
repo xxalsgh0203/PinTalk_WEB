@@ -66,9 +66,11 @@ const UserInfoData = ({ userInfo }: Props) => {
         email,
         job_key,
         saveStatus,
+        admin_yn,
       } = userInfo[0];
       name && setValue("name", name);
       gender && setValue("gender", gender);
+      admin_yn && setValue("admin_yn", admin_yn);
       ssn1 && setValue("ssn1", ssn1);
       ssn2 && setValue("ssn2", ssn2);
       phone1 && setValue("phone1", phone1);
@@ -87,7 +89,7 @@ const UserInfoData = ({ userInfo }: Props) => {
   const onValid = (data: UserSubmitData) => {
     const email = data.frontEmail && data.frontEmail + "@" + data.backEmail;
     const phone1 = data.phone2 && data.phone3 ? data.phone1 : null;
-    const address = (data.address1 && data.address2 && data.address1 + data.address2) || null;
+    const address = data.address1 || (data.address2 && data.address1 + data.address2) || null;
     const ssn = data.ssn1 + data.ssn2 || null;
 
     const submitData = {
@@ -110,7 +112,9 @@ const UserInfoData = ({ userInfo }: Props) => {
       ssn2: data.ssn2 || null,
       saveStatus: data.saveStatus || null,
       res_cnt: data.res_cnt ? data.res_cnt : 0,
+      admin_yn: data.admin_yn || null,
     };
+    console.log(submitData);
     mutation(submitData);
   };
 

@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d91663c-954c-4819-94c4-b6d2b804b60c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/asset/bankIcon/국민은행.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/asset/bankIcon/신한은행.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/asset/bankIcon/우리은행.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/admin/UserDetail/UserAccounts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/UserDetail/UserAccounts.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/admin/UserDetail/UserInfoData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/UserDetail/UserInfoData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +62,7 @@
       <updated>1675943707433</updated>
       <workItem from="1675943709120" duration="3108000" />
       <workItem from="1675949605465" duration="3965000" />
-      <workItem from="1676118177985" duration="3820000" />
+      <workItem from="1676118177985" duration="7490000" />
     </task>
     <servers />
   </component>
