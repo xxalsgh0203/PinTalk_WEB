@@ -91,6 +91,10 @@ const UserInfoData = ({ userInfo }: Props) => {
     const phone1 = data.phone2 && data.phone3 ? data.phone1 : null;
     const address = data.address1 || (data.address2 && data.address1 + data.address2) || null;
     const ssn = data.ssn1 + data.ssn2 || null;
+    // const year =
+    //   data.ssn2[0] === "3" || "4" ? "19" + data.ssn1.slice(0, 1) : "20" + data.ssn1.slice(0, 1);
+    // const month = data.ssn1.slice(2, 3);
+    // const day = data.ssn1.slice(4, 5);
 
     const submitData = {
       no: userInfo[0].no || null,
@@ -112,7 +116,10 @@ const UserInfoData = ({ userInfo }: Props) => {
       ssn2: data.ssn2 || null,
       saveStatus: data.saveStatus || null,
       res_cnt: data.res_cnt ? data.res_cnt : 0,
-      admin_yn: data.admin_yn || null,
+      admin_yn: data.admin_yn,
+      // year: year,
+      // month: month,
+      // day: day,
     };
     console.log(submitData);
     mutation(submitData);
