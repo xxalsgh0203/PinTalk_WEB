@@ -49,11 +49,12 @@ const RegisterForm = () => {
       phone1,
       phone2: data.phone2 || null,
       phone3: data.phone3 || null,
-      saveStatus: data.saveStatus || null,
+      saveStatus: "A",
       ssn,
-      res_cnt: 0,
+      resCnt: 0,
       admin_yn: "N",
     };
+
     if (window.confirm("정말 등록하시겠습니까?")) {
       mutation(submitData);
     }
@@ -199,32 +200,6 @@ const RegisterForm = () => {
               label="직업코드"
               maxLength={4}
             />
-          </div>
-
-          <div className="flex flex-col space-y-2">
-            <div className="flex items-center">
-              <label className="text-sm">회원 가입상태</label>
-              {errors.saveStatus ? (
-                <FormErrorMessage errorMessage={errors.saveStatus?.message} />
-              ) : (
-                <span className="ml-4 text-sm text-pintalk-dark-yellow">필수정보입니다.</span>
-              )}
-            </div>
-            <select
-              {...register("saveStatus", {
-                required: "가입상태를 선택해주세요.",
-              })}
-              className={cls(
-                "bg-transparent border-2 rounded-md px-1 py-1 outline-none w-full relative text-pintalk-dark-brown",
-                errors.saveStatus
-                  ? "ring-1 ring-offset-1 ring-red-500 border-transparent"
-                  : "border-gray-200",
-              )}
-            >
-              <option value="">선택</option>
-              <option value="A">활성</option>
-              <option value="W">탈퇴</option>
-            </select>
           </div>
         </div>
       </div>

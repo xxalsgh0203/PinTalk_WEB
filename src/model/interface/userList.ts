@@ -81,7 +81,7 @@ export interface UserSubmitData {
   frontEmail?: string;
   backEmail?: string;
   saveStatus?: string;
-  res_cnt?: number;
+  resCnt?: number;
   error?: {
     message: string;
   };
