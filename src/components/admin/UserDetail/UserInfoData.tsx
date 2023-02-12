@@ -31,8 +31,6 @@ const UserInfoData = ({ userInfo }: Props) => {
     mode: "onChange",
   });
 
-  console.log("userInfo", userInfo);
-
   const { error, loading, mutation, data } = useMutation("/userMemberDetailModify");
   const { address, handleAddress } = useAddress();
 
