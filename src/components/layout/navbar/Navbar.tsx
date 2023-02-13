@@ -6,18 +6,28 @@ import useWindowSize from "../../../hooks/useWindowSize";
 import { navbarsMain } from "../../../data/navbar/navbars";
 import NavDropdown from "./NavDropdown";
 import MainLogo from "../MainLogo";
+import { useEffect, useState } from "react";
 
 interface Props {
   title?: string;
 }
 
 const Navbar = ({ title }: Props) => {
-  const { smallSize, isActive, toggleActive } = useWindowSize();
+  const [isActive, setIsActive] = useState(false);
+  const { smallWindowSize } = useWindowSize();
   const navigate = useNavigate();
 
   const onPage = (navId?: string) => {
     navigate(`/${navId}`);
   };
+
+  const handleDropDown = () => {
+    setIsActive(false);
+  };
+
+  useEffect(() => {
+    !smallWindowSize && setIsActive(false);
+  }, [smallWindowSize]);
 
   return (
     <div className="relative">
@@ -25,8 +35,8 @@ const Navbar = ({ title }: Props) => {
         <MainLogo />
         <h1>{title}</h1>
 
-        {smallSize ? (
-          <div onClick={toggleActive} className="cursor-pointer">
+        {smallWindowSize ? (
+          <div onClick={() => setIsActive((prev) => !prev)} className="cursor-pointer">
             {isActive ? <AiOutlineClose size={25} /> : <GiHamburgerMenu size={25} />}
           </div>
         ) : (
@@ -44,7 +54,13 @@ const Navbar = ({ title }: Props) => {
           </ul>
         )}
       </div>
-      {<NavDropdown active={isActive} navigationItems={navbarsMain} />}
+      {
+        <NavDropdown
+          active={isActive}
+          navigationItems={navbarsMain}
+          handleDropDown={handleDropDown}
+        />
+      }
     </div>
   );
 };

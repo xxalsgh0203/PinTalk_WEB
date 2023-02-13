@@ -24,7 +24,7 @@ const subNavbar: HeaderNavs[] = [
 ];
 
 const Header = () => {
-  const { smallSize } = useWindowSize();
+  const { smallWindowSize } = useWindowSize();
   return (
     <div className="animate-fade">
       <div className="flex justify-center items-center pl-1 py-20">
@@ -41,7 +41,7 @@ const Header = () => {
           </div>
         </div>
 
-        {smallSize ? null : (
+        {smallWindowSize ? null : (
           <div className="lg:w-[30%]">
             <img className="h-[270px] md:h-[320px] xl:h-[400px]" src={mainUrl} alt="icon" />
           </div>

@@ -2,9 +2,10 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
 
-import { navbarsAdmin } from "../../../data/navbar/navbars";
-import SideNavbar from "./sideNavbar/SideNavbar";
 import { Link } from "react-router-dom";
+import { navbarsAdmin } from "../../../data/navbar/navbars";
+
+import SideNavbar from "./sideNavbar/SideNavbar";
 
 interface Props {
   title: string;
@@ -12,6 +13,11 @@ interface Props {
 
 const AdminNavbar = ({ title }: Props) => {
   const [isActive, setIsActive] = useState(false);
+
+  const handleOutsideClick = () => {
+    setIsActive(false);
+  };
+
   return (
     <div>
       <div className="fixed w-full p-3 flex items-center justify-center bg-white shadow-md z-40">
@@ -37,7 +43,12 @@ const AdminNavbar = ({ title }: Props) => {
           </Link>
         </div>
       </div>
-      <SideNavbar active={isActive} navItems={navbarsAdmin} />
+
+      <SideNavbar
+        active={isActive}
+        navItems={navbarsAdmin}
+        handleOutsideClick={handleOutsideClick}
+      />
     </div>
   );
 };
