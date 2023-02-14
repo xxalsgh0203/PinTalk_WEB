@@ -1,5 +1,19 @@
 import { PageInfo } from "./common";
 
+export interface AccountType {
+  "1": "수시입출금";
+  "2": "예적금";
+  "6": "수익증권";
+  T: "종합계좌";
+}
+
+export interface AccountState {
+  "01": "사용";
+  "09": "해지";
+}
+
+type AgreeState = "Y" | "N";
+
 export interface AccountInfo {
   userMember?: number;
   finTechUseNum?: string;
@@ -21,20 +35,6 @@ export interface AccountInfo {
   createDt?: Date;
   modifyDt?: Date;
 }
-
-export interface AccountType {
-  "1": "수시입출금";
-  "2": "예적금";
-  "6": "수익증권";
-  T: "종합계좌";
-}
-
-export interface AccountState {
-  "01": "사용";
-  "09": "해지";
-}
-
-type AgreeState = "Y" | "N";
 
 export type AccountListPayload = [AccountInfo, PageInfo];
 

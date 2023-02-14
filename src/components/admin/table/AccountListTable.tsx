@@ -1,6 +1,12 @@
 import AccountFilteringTable from "../filtering/AccountFilteringTable";
-
+import useAccount from "../../../hooks/useAccount";
+import Pagination from "../Pagination";
+import UserAccounts from "../userAccounts";
 const AccountListTable = () => {
+  const { accounts: accountList, error, PageInfo, loading } = useAccount();
+
+  console.log(accountList);
+
   return (
     <div>
       <AccountFilteringTable />
@@ -23,13 +29,14 @@ const AccountListTable = () => {
               </th>
             </tr>
           </thead>
-          {/* <tbody className="divide-y divide-gray-100">
-                {userList?.map((member) => {
-                  return <UserMembers member={member} key={member.id} />;
-                })}
-              </tbody> */}
+          <tbody className="divide-y divide-gray-100">
+            {/*{accountList?.map((account) => {*/}
+            {/*  return <UserAccounts account={account} key={account.no} />;*/}
+            {/*})}*/}
+          </tbody>
         </table>
       </div>
+      <Pagination PageInfo={PageInfo}></Pagination>
     </div>
   );
 };
