@@ -1,3 +1,5 @@
+import { PageInfo } from "./common";
+
 export interface CodeEmail {
   codeGroup: string;
   codeName: string;
@@ -33,13 +35,6 @@ export interface UserInfo {
   ssn2?: string;
   update_Date?: Date;
   admin_yn: "N";
-}
-
-export interface PageInfo {
-  startPage: number;
-  currPage: number;
-  totalPage: number;
-  endPage: number;
 }
 
 export interface UserFilteringData {
