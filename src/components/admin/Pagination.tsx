@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
-import { PageInfo } from "../../model/interface/userList";
+import { PageInfo } from "../../model/interface/common";
+
 import { userSlice } from "../../redux/slices/userSlice";
 import cls from "../../utils/cls";
 

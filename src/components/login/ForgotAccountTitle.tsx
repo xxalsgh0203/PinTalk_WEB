@@ -25,7 +25,7 @@ const ForgotAccountTitle = ({ handleTitle, buttonTitle }: Props) => {
   };
 
   return (
-    <div className="flex items-center justify-between w-full h-10">
+    <div className="flex items-center justify-between w-[30rem] h-10">
       <div className="h-full">
         {forgotAccountTitles.map((item) => (
           <button
