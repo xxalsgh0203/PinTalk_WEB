@@ -1,31 +1,33 @@
-import { createBrowserRouter } from "react-router-dom";
-import App from "./App";
+import { createBrowserRouter } from 'react-router-dom';
+import App from './App';
 
-import Home from "./pages/Home";
-import Investment from "./pages/Investment";
-import Loan from "./pages/Loan";
+import Home from './pages/Home';
+import Investment from './pages/Investment';
+import Loan from './pages/Loan';
 
-import UserMemberDetail from "./components/admin/UserDetail/UserMemberDetail";
+import UserMemberDetail from './components/admin/UserDetail/UserMemberDetail';
 
-import NotFound from "./pages/NotFound";
-import Login from "./pages/login/Login";
-import ForgotAccount from "./pages/login/ForgotAccount";
+import NotFound from './pages/NotFound';
+import Login from './pages/login/Login';
+import ForgotAccount from './pages/login/ForgotAccount';
 
-import Admin from "./pages/admin/Admin";
-import LoginRegister from "./pages/login/LoginRegister";
-import AdminRegister from "./pages/admin/AdminRegister";
-import UserWithdrawalHistory from "./components/admin/UserDetail/UserWithdrawalHistory";
-import UserTransferHistory from "./components/admin/UserDetail/UserTransferHistory";
+import Admin from './pages/admin/Admin';
+import LoginRegister from './pages/login/LoginRegister';
+import UserRegister from './pages/admin/UserRegister';
+import UserWithdrawalHistory from './components/admin/UserDetail/UserWithdrawalHistory';
+import UserTransferHistory from './components/admin/UserDetail/UserTransferHistory';
 
-import UserAccounts from "./components/admin/UserDetail/UserAccounts";
-import UserRegisterAccount from "./components/admin/UserDetail/UserRegisterAccount";
+import UserAccounts from './components/admin/UserDetail/UserAccounts';
+import UserRegisterAccount from './components/admin/UserDetail/UserRegisterAccount';
 
-import UserMyPage from "./pages/user/UserMyPage";
-import AccountList from "./pages/admin/AccountList";
+import UserMyPage from './pages/user/UserMyPage';
+
+import AccountList from './pages/admin/account/AccountList';
+import AccountRegister from './pages/admin/account/AccountRegister';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     errorElement: <NotFound />,
     children: [
@@ -34,53 +36,53 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "investment",
+        path: 'investment',
         element: <Investment />,
       },
       {
-        path: "loan",
+        path: 'loan',
         element: <Loan />,
       },
       {
-        path: "userMemberDetail/:id",
+        path: 'userMemberDetail/:id',
         element: <UserMemberDetail />,
       },
       {
-        path: "userWithdrawalHistory/:id",
+        path: 'userWithdrawalHistory/:id',
         element: <UserWithdrawalHistory />,
       },
       {
-        path: "userTransferHistory/:id",
+        path: 'userTransferHistory/:id',
         element: <UserTransferHistory />,
       },
       {
-        path: "userAccounts/:id",
+        path: 'userAccounts/:id',
         element: <UserAccounts />,
       },
       {
-        path: "userRegisterAccount/:id",
+        path: 'userRegisterAccount/:id',
         element: <UserRegisterAccount />,
       },
       {
-        path: "login",
+        path: 'login',
         element: <Login />,
       },
       {
-        path: "forgot-account",
+        path: 'forgot-account',
         element: <ForgotAccount />,
       },
       {
-        path: "register",
+        path: 'register',
         element: <LoginRegister />,
       },
       {
-        path: "usermypage",
+        path: 'usermypage',
         element: <UserMyPage />,
       },
     ],
   },
   {
-    path: "/admin",
+    path: '/admin',
     errorElement: <NotFound />,
     children: [
       {
@@ -88,12 +90,16 @@ const router = createBrowserRouter([
         element: <Admin />,
       },
       {
-        path: "account",
+        path: 'account',
         element: <AccountList />,
       },
       {
-        path: "insertUser",
-        element: <AdminRegister />,
+        path: 'insertAccount',
+        element: <AccountRegister />,
+      },
+      {
+        path: 'insertUser',
+        element: <UserRegister />,
       },
     ],
   },
