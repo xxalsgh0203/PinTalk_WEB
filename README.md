@@ -14,8 +14,8 @@
 
 <div align=center>
   
-| [포트폴리오 소개](https://docs.google.com/presentation/d/1H_rjI6O2zBrEWozUJTMnuKWjPJJJRW6P/edit#slide=id.p1) | [WBS](https://docs.google.com/spreadsheets/d/1g7MpaDh9WYtmyc4QH8WAVY5tF35b4EH9L_3lOhc-jMQ/edit#gid=01) | 
-|---|---|
+| [포트폴리오 소개](https://docs.google.com/presentation/d/1H_rjI6O2zBrEWozUJTMnuKWjPJJJRW6P/edit#slide=id.p1) | [WBS](https://docs.google.com/spreadsheets/d/1g7MpaDh9WYtmyc4QH8WAVY5tF35b4EH9L_3lOhc-jMQ/edit#gid=01) | [WAS 서버](https://github.com/Pin-Talk/PinTalk_WAS) |
+|---|---|---|
   
 </div>
 
