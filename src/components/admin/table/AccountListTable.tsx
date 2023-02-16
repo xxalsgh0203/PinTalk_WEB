@@ -5,6 +5,8 @@ import UserAccounts from "../userAccounts";
 const AccountListTable = () => {
   const { accounts: accountList, error, PageInfo, loading } = useAccount();
 
+  console.log(accountList);
+
   return (
     <div>
       <AccountFilteringTable />

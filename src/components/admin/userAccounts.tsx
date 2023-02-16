@@ -35,7 +35,7 @@ const UserAccounts = ({ account }: Props) => {
             "2": "예적금",
             "6": "수익증권",
             T: "종합계좌",
-          }[account_Type]
+          }[account_Type!]
         }
       </td>
       <td className="p-3 text-sm whitespace-nowrap">{account?.bankCodeStd}</td>

@@ -34,6 +34,9 @@ export interface AccountInfo {
   state?: keyof AccountState;
   createDt?: Date;
   modifyDt?: Date;
+  no?: number;
+  reg_Date: Date;
+  update_Date: Date;
 }
 
 export type AccountListPayload = [AccountInfo, PageInfo];

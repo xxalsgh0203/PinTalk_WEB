@@ -110,6 +110,7 @@ const AccountFilteringTable = () => {
         <div className="flex justify-end space-x-2 mt-4">
           <FilteringButton type="button" title="리셋" />
           <FilteringButton type="submit" title="검색" />
+          <FilteringButton type="button" title="등록" />
         </div>
       </div>
     </form>
