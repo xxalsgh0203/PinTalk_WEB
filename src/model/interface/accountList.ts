@@ -39,7 +39,7 @@ export interface AccountInfo {
   update_Date: Date;
 }
 
-export type AccountListPayload = [AccountInfo, PageInfo];
+export type AccountListPayload = [AccountInfo[], PageInfo];
 
 export interface AccountListInitialState {
   payload?: AccountListPayload;
