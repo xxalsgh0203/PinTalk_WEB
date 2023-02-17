@@ -1,6 +1,6 @@
-import React from 'react';
-import AdminLayout from '../../components/admin/AdminLayout';
-import UserListTable from '../../components/admin/table/UserListTable';
+import React from "react";
+import AdminLayout from "../../components/admin/AdminLayout";
+import UserListTable from "../../components/admin/table/UserListTable";
 
 const Admin = () => {
   return (
