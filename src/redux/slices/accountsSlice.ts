@@ -1,8 +1,8 @@
-import axios, { AxiosError } from "axios";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import HttpError from "../../service/httpError";
-import { UserFilteringData } from "../../model/interface/userList";
-import { AccountListInitialState, AccountListPayload } from "../../model/interface/accountList";
+import axios, { AxiosError } from 'axios';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import HttpError from '../../service/httpError';
+import { UserFilteringData } from '../../model/interface/userList';
+import { AccountListInitialState, AccountListPayload } from '../../model/interface/accountList';
 
 interface ThunkArg {
   page: number;
@@ -10,11 +10,11 @@ interface ThunkArg {
 }
 
 export const getList = createAsyncThunk<AccountListPayload, ThunkArg>(
-  "account/GET_LIST",
+  'account/GET_LIST',
   async ({ page = 0, submitData }, thunkAPI: any) => {
     try {
       const response = await (
-        await axios.get("/accountList", {
+        await axios.get('/accountList', {
           params: {
             page,
           },
@@ -28,7 +28,7 @@ export const getList = createAsyncThunk<AccountListPayload, ThunkArg>(
         const statusCode = thunkAPI.rejectWithValue(response.data).payload.status;
         throw new HttpError(statusCode, errorMessage).errorMessage;
       } else {
-        console.error("Unknown Error");
+        console.error('Unknown Error');
       }
     }
   },
@@ -42,8 +42,8 @@ const initialState: AccountListInitialState = {
   page: 0,
 };
 
-export const accountSlice = createSlice({
-  name: "userList",
+export const accountsSlice = createSlice({
+  name: 'userList',
   initialState,
   reducers: {
     handlePage(state, action: PayloadAction<number>) {

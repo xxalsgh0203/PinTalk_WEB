@@ -1,7 +1,7 @@
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { CodeEmail, UserFilteringData } from '../../../model/interface/userList';
-import { userSlice } from '../../../redux/slices/usersSlice';
+import { usersSlice } from '../../../redux/slices/usersSlice';
 
 import { openNewWindow } from '../../../utils/openNewWindow';
 import ValidateForm, { inputSetValues, NUMBER, NUMBER_ENGLISH } from '../../../utils/validateForm';
@@ -106,7 +106,7 @@ const UserFilteringTable = ({ emailCodeGroup }: Props) => {
       email: convertEmail(frontEmail, backEmail) || null,
     };
 
-    userSubmitDispatch(userSlice.actions.handleSubmit(submitData));
+    userSubmitDispatch(usersSlice.actions.handleSubmit(submitData));
   };
 
   const openWindow = () => {
