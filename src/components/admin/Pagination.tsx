@@ -1,8 +1,8 @@
-import { useDispatch } from "react-redux";
-import { PageInfo } from "../../model/interface/common";
+import { useDispatch } from 'react-redux';
+import { PageInfo } from '../../model/interface/common';
 
-import { userSlice } from "../../redux/slices/userSlice";
-import cls from "../../utils/cls";
+import { userSlice } from '../../redux/slices/usersSlice';
+import cls from '../../utils/cls';
 
 interface Props {
   PageInfo?: PageInfo;
@@ -41,10 +41,10 @@ function Pagination({ PageInfo }: Props) {
             .map((_, i) => (
               <button
                 className={cls(
-                  "w-6 h-6 sm:w-8 sm:h-8 text-sm sm:text-xl font-bold",
+                  'w-6 h-6 sm:w-8 sm:h-8 text-sm sm:text-xl font-bold',
                   i === PageInfo?.currPage
-                    ? "bg-pintalk-dark-yellow text-white rounded-full"
-                    : "hover:text-gray-400 transition-all",
+                    ? 'bg-pintalk-dark-yellow text-white rounded-full'
+                    : 'hover:text-gray-400 transition-all',
                 )}
                 key={i}
                 onClick={() => handlePageChange(i)}
