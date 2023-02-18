@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { AccountListInitialState } from "../model/interface/accountList";
-import { getList } from "../redux/slices/accountSlice";
-import { RootState, useAppDispatch } from "../redux/store";
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { AccountListInitialState } from '../model/interface/accountList';
+import { getList } from '../redux/slices/accountsSlice';
+import { RootState, useAppDispatch } from '../redux/store';
 
 const useAccount = () => {
   const dispatch = useAppDispatch();

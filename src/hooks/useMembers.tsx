@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { UserFilteringData, UserListInitialState } from "../model/interface/userList";
-import { getList } from "../redux/slices/userSlice";
-import { RootState, useAppDispatch } from "../redux/store";
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { UserFilteringData, UserListInitialState } from '../model/interface/userList';
+import { getList } from '../redux/slices/usersSlice';
+import { RootState, useAppDispatch } from '../redux/store';
 
 const useMembers = () => {
   const dispatch = useAppDispatch();
