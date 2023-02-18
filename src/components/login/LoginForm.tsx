@@ -27,7 +27,9 @@ const LoginForm = () => {
   };
 
   const openWindow = () => {
-    openNewWindow('register');
+    openNewWindow({
+      url: 'register',
+    });
   };
 
   return (

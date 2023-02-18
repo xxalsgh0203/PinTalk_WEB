@@ -82,7 +82,11 @@ const RegisterForm = () => {
   const checkUser = async () => {
     console.log('test');
     const response = await (await axios.get('/openBank/authorize')).data;
-    response && openNewWindow(response, true);
+    response &&
+      openNewWindow({
+        url: response,
+        notLocal: true,
+      });
   };
 
   return loading ? (
