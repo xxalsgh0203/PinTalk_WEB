@@ -1,7 +1,15 @@
-export function openNewWindow(url: string) {
+interface OpenWindowData {
+  url: string;
+  notLocal?: boolean;
+  width?: number;
+  height?: number;
+}
+
+export function openNewWindow({ url, notLocal, height, width }: OpenWindowData) {
   return window.open(
-    `http://localhost:3000/${url}`,
+    notLocal ? url : `http://localhost:3000/${url}`,
     '_blank',
-    `width = ${window.screen.width / 2}, height = ${window.screen.height}`,
+    `width = ${width ? width : window.screen.width / 2}, 
+    height = ${height ? height : window.screen.height}`,
   );
 }

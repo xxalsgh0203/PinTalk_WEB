@@ -1,9 +1,9 @@
-import { useForm } from "react-hook-form";
-import { useNavigate, Link } from "react-router-dom";
-import { openNewWindow } from "../../utils/openNewWindow";
-import LoginButton from "./LoginButton";
-import LoginInput from "./LoginInput";
-import LoginTitle from "./LoginTitle";
+import { useForm } from 'react-hook-form';
+import { useNavigate, Link } from 'react-router-dom';
+import { openNewWindow } from '../../utils/openNewWindow';
+import LoginButton from './LoginButton';
+import LoginInput from './LoginInput';
+import LoginTitle from './LoginTitle';
 
 interface LoginFormData {
   id: string;
@@ -23,11 +23,13 @@ const LoginForm = () => {
   };
 
   const onForgotAccount = () => {
-    navigate("/forgot-account");
+    navigate('/forgot-account');
   };
 
   const openWindow = () => {
-    openNewWindow("register");
+    openNewWindow({
+      url: 'register',
+    });
   };
 
   return (
@@ -42,8 +44,8 @@ const LoginForm = () => {
         <LoginTitle title="로그인" />
         <form onSubmit={handleSubmit(onValid)} className="w-[50%]">
           <LoginInput
-            register={register("id", {
-              required: "아이디를 입력해주세요.",
+            register={register('id', {
+              required: '아이디를 입력해주세요.',
             })}
             type="text"
             label="아이디"
@@ -51,8 +53,8 @@ const LoginForm = () => {
             errorMessage={errors?.id?.message}
           />
           <LoginInput
-            register={register("password", {
-              required: "비밀번호를 입려해주세요.",
+            register={register('password', {
+              required: '비밀번호를 입려해주세요.',
             })}
             type="password"
             label="비밀번호"

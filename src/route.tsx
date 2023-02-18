@@ -13,6 +13,7 @@ import ForgotAccount from './pages/login/ForgotAccount';
 
 import Admin from './pages/admin/Admin';
 import LoginRegister from './pages/login/LoginRegister';
+import Certification from './pages/login/Certification';
 import UserRegister from './pages/admin/UserRegister';
 import UserWithdrawalHistory from './components/admin/UserDetail/UserWithdrawalHistory';
 import UserTransferHistory from './components/admin/UserDetail/UserTransferHistory';
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: 'usermypage',
         element: <UserMyPage />,
+      },
+      {
+        path: 'certification',
+        element: <Certification />,
       },
     ],
   },
