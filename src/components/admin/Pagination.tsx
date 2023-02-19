@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { PageInfo } from '../../model/interface/common';
 
-import { userSlice } from '../../redux/slices/usersSlice';
+import { usersSlice } from '../../redux/slices/usersSlice';
 import cls from '../../utils/cls';
 
 interface Props {
@@ -13,16 +13,16 @@ function Pagination({ PageInfo }: Props) {
 
   const handlePrevPage = () => {
     if (!PageInfo) return;
-    pageDispatch(userSlice.actions.handlePage(PageInfo?.currPage - 1));
+    pageDispatch(usersSlice.actions.handlePage(PageInfo?.currPage - 1));
   };
 
   const handleAfterPage = () => {
     if (!PageInfo) return;
-    pageDispatch(userSlice.actions.handlePage(PageInfo?.currPage + 1));
+    pageDispatch(usersSlice.actions.handlePage(PageInfo?.currPage + 1));
   };
 
   const handlePageChange = (p: number) => {
-    pageDispatch(userSlice.actions.handlePage(p));
+    pageDispatch(usersSlice.actions.handlePage(p));
   };
 
   return (
