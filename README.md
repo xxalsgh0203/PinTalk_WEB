@@ -64,11 +64,7 @@
   
 </div>
 
-<br>
-
-
 <hr>
-
 <div align="center">
 
 |                 [FRONT\_김민호](https://github.com/jangth0655)               |
@@ -77,6 +73,7 @@
   
   22.12.27 ~ 23.02.15
 </div>
+<hr>
 
 <br>
 
