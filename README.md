@@ -13,11 +13,10 @@
 <br/>
 
 <div align=center>
-  
-| <img src='https://user-images.githubusercontent.com/62753490/214891271-f534d4f6-a4b1-4920-9fdc-670bd70e38f8.png' width=120> | <img src='https://avatars.githubusercontent.com/u/72855455?v=4' width=120> |
 
+| [포트폴리오 소개](https://docs.google.com/presentation/d/1H_rjI6O2zBrEWozUJTMnuKWjPJJJRW6P/edit#slide=id.p1) | [WBS](https://docs.google.com/spreadsheets/d/1g7MpaDh9WYtmyc4QH8WAVY5tF35b4EH9L_3lOhc-jMQ/edit#gid=01) | 
+|---|---|
 
-  
 </div>
 
 
